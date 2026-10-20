@@ -1,0 +1,100 @@
+================================================================================
+     WARLOCKTRAINER v1.0 - GUIA DE INSTALACION Y USO PARA TERCEROS
+             World of Warcraft: Wrath of the Lich King (3.3.5a)
+                     Servidores Warmane (Lordaeron / Icecrown)
+================================================================================
+
+¡Bienvenido a WarlockTrainer!
+Este addon fue desarrollado para que nunca más tengas que adivinar cuándo ir al
+instructor de Brujos, qué habilidades nuevas desbloqueas, cuánto oro te van a
+costar o cuál es el instructor más cercano a tu ruta de leveo.
+
+================================================================================
+1. INSTALACION FACIL (3 PASOS)
+================================================================================
+
+1. Ubica tu carpeta principal de World of Warcraft 3.3.5a.
+2. Abre la siguiente ruta:
+   World of Warcraft \ Interface \ AddOns \
+
+3. Copia la carpeta "WarlockTrainer" y pégala dentro de "AddOns".
+   
+   IMPORTANTE: Verifica que los archivos queden en esta estructura:
+   World of Warcraft\Interface\AddOns\WarlockTrainer\WarlockTrainer.toc
+   World of Warcraft\Interface\AddOns\WarlockTrainer\Core.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\UI.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\Options.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\Localization.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\MinimapButton.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\Data\Spells.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\Data\Trainers.lua
+
+4. Entra al juego (o si ya estabas dentro, escribe en el chat: /reload).
+5. En la pantalla de tus personajes, haz clic en el botón "Accesorios" (abajo
+   a la izquierda) y asegúrate de que "WarlockTrainer" tenga la casilla marcada.
+   (Recomendado: Marca también la casilla "Cargar accesorios antiguos").
+
+================================================================================
+2. COMO ABRIR Y USAR EL ADDON
+================================================================================
+
+Puedes abrir el addon de dos formas:
+  a) Haciendo clic izquierdo en el icono morado del Minimapa.
+  b) Escribiendo en el chat:  /wt  o  /warlock-train
+
+El panel principal cuenta con 4 pestañas:
+  * [Disponibles]: Hechizos que ya puedes aprender por tu nivel y que aún no tienes.
+  * [Próximo Nivel]: Qué hechizos desbloquearás en el siguiente tramo de nivel
+    (ideal para planificar si vale la pena viajar o esperar).
+  * [Todos (1-80)]: Catálogo completo de todas las habilidades de Brujo.
+  * [Aprendidos]: Lista de hechizos que ya compraste.
+
+================================================================================
+3. CONTROL DE ORO Y PRESUPUESTO
+================================================================================
+
+En la parte superior verás:
+  * Tu dinero actual (Oro, Plata, Cobre).
+  * El coste total pendiente de todos los hechizos de tu nivel.
+  * Si te alcanza el dinero: Saldrá en VERDE con el mensaje "(¡Alcanza!)".
+  * Si no te alcanza: Saldrá en ROJO indicándote cuánto dinero te falta exactamente.
+
+================================================================================
+4. RUTA HACIA EL ENTRENADOR MAS CERCANO
+================================================================================
+
+El addon detecta tu zona actual y tu facción (Alianza u Horda).
+  * Si estás en una ciudad o zona con instructor, te muestra la distancia en yardas
+    y sus coordenadas exactas (X, Y).
+  * Si estás en otra zona, te sugiere la capital más cercana del continente.
+  * Botón "Ruta": Si tienes instalado Cartographer, TomTom o Carbonite, al hacer
+    clic se coloca automáticamente la flecha de navegación directa al instructor.
+
+================================================================================
+5. COMANDOS DE CHAT
+================================================================================
+
+  /wt              -> Abre o cierra la ventana principal.
+  /warlock-train   -> Abre o cierra la ventana principal.
+  /wt es           -> Cambia el idioma a Español.
+  /wt en           -> Cambia el idioma a Inglés.
+  /wt ruta         -> Fija el waypoint hacia el entrenador más cercano.
+  /wt trainer      -> Muestra en el chat el nombre y las coordenadas del entrenador.
+  /wt help         -> Muestra la lista de ayuda.
+
+================================================================================
+6. CONFIGURACION DEL JUEGO
+================================================================================
+
+Puedes acceder al menú de configuración en:
+  Menú del Juego (Escape) -> Interfaz -> Pestaña "Accesorios" -> WarlockTrainer
+
+Desde allí puedes:
+  - Activar o desactivar el aviso sonoro y en chat al subir de nivel.
+  - Mostrar u ocultar el botón del minimapa.
+  - Cambiar el idioma entre Español e Inglés.
+  - Ver el resumen de estado de tu personaje y entrenador asignado.
+
+================================================================================
+¡Disfruta el leveo de tu Brujo en Warmane!
+================================================================================

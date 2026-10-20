@@ -1,0 +1,15 @@
+## Interface: 30300
+## Title: |cff9482c9WarlockTrainer|r
+## Notes: Warlock spell training manager, cost calculator and trainer locator for WotLK 3.3.5a.
+## Notes-esES: Gestor de habilidades de Brujo, calculadora de costes y localizador de entrenadores para WotLK 3.3.5a (Warmane Lordaeron).
+## Author: Antigravity
+## Version: 1.0.0
+## SavedVariables: WarlockTrainerDB
+
+Localization.lua
+Data\Spells.lua
+Data\Trainers.lua
+Core.lua
+UI.lua
+Options.lua
+MinimapButton.lua

@@ -1,0 +1,59 @@
+========================================================================
+     WARLOCKTRAINER - ADDON PARA WOW 3.3.5a (WOTLK / WARMANE LORDAERON)
+========================================================================
+
+¡Hola! Este addon fue creado especialmente para solucionar el problema de no saber cuándo ir al entrenador de Brujos, qué habilidades aprenderás, cuánto dinero necesitas y cuál es el entrenador más cercano.
+
+------------------------------------------------------------------------
+1. INSTRUCCIONES DE INSTALACIÓN
+------------------------------------------------------------------------
+
+1. Ve a la carpeta donde tienes instalado World of Warcraft 3.3.5a (por ejemplo, el cliente de Warmane).
+2. Entra en la ruta:
+   World of Warcraft \ Interface \ AddOns \
+
+3. Copia la carpeta "WarlockTrainer" (la que contiene el archivo WarlockTrainer.toc) y pégala dentro de la carpeta "AddOns".
+   Debe quedar así:
+   World of Warcraft\Interface\AddOns\WarlockTrainer\WarlockTrainer.toc
+   World of Warcraft\Interface\AddOns\WarlockTrainer\Core.lua
+   World of Warcraft\Interface\AddOns\WarlockTrainer\UI.lua
+   ... (demás archivos)
+
+4. Abre World of Warcraft (o escribe /reload si ya estabas dentro del juego).
+5. En la pantalla de selección de personajes, haz clic en el botón "Accesorios" (AddOns) abajo a la izquierda.
+6. Asegúrate de que "WarlockTrainer" esté marcado con la casilla activada. (Opcional: Marca también "Cargar accesorios antiguos" por seguridad).
+
+------------------------------------------------------------------------
+2. FORMAS DE ABRIR EL ADDON
+------------------------------------------------------------------------
+
+- Escribe en el chat:
+    /wt
+    /warlock-train
+    /wtrain
+
+- O haz clic izquierdo en el icono morado del minimapa (puedes arrastrarlo alrededor del minimapa con el ratón).
+
+------------------------------------------------------------------------
+3. FUNCIONALIDADES PRINCIPALES
+------------------------------------------------------------------------
+
+- [Disponibles]: Te muestra todos los hechizos de tu nivel actual o inferior que todavía no has aprendido.
+- [Próximo Nivel]: Te muestra los hechizos que se desbloquearán en el siguiente nivel par para que planifiques tu viaje.
+- [Todos (1-80)]: Lista completa de habilidades de Brujo desde nivel 1 hasta 80.
+- [Aprendidos]: Habilidades que ya tienes en tu libro de hechizos.
+- Control de Monedas:
+    * Te dice cuánto dinero tienes.
+    * Te dice el coste total en Oro, Plata y Cobre de los hechizos pendientes.
+    * Si no tienes suficiente dinero, el coste se pondrá en rojo y te dirá exactamente cuánto te falta.
+- Localizador del Entrenador más cercano:
+    * Detecta automáticamente si estás en la Alianza o en la Horda.
+    * Detecta tu zona actual y calcula el entrenador de brujos más cercano con sus coordenadas exactas (X, Y).
+    * Botón "TomTom": Si usas el addon TomTom, al hacer clic añade la flecha que te guía directo al entrenador.
+- Aviso automático al subir de nivel:
+    * Cada vez que subas a un nivel que tenga nuevos hechizos en el entrenador, el addon te avisará en el chat con sonido para recordarte que vayas.
+- Tooltips de hechizos:
+    * Pasa el ratón por encima de cualquier hechizo de la lista y verás el tooltip original del juego con la descripción, coste de maná y tiempo de lanzamiento.
+
+¡A disfrutar y a subir ese Brujo en Lordaeron!
+========================================================================
