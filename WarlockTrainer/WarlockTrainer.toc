@@ -9,6 +9,7 @@
 Localization.lua
 Data\Spells.lua
 Data\Trainers.lua
+Data\Quests.lua
 Core.lua
 UI.lua
 Options.lua

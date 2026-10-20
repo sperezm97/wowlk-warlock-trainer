@@ -7,7 +7,7 @@ WT.Locales = {}
 WT.Locales.es = {
     -- Window Titles & Labels
     TITLE = "Warlock Trainer |cff9482c9(3.3.5a)|r",
-    SUBTITLE = "Gestor de Habilidades y Entrenadores para Brujos",
+    SUBTITLE = "Gestor de Habilidades, Entrenadores y Misiones para Brujos",
     YOUR_LEVEL = "Tu Nivel:",
     YOUR_MONEY = "Tu Dinero:",
     TOTAL_NEEDED = "Coste Pendiente:",
@@ -20,11 +20,15 @@ WT.Locales.es = {
     NAV_SET = "|cff9482c9[WarlockTrainer]|r Flecha / Waypoint fijado hacia %s en %s (%.1f, %.1f)",
     NAV_NOT_FOUND = "|cff9482c9[WarlockTrainer]|r Entrenador más cercano: %s en %s (%.1f, %.1f)",
     
-    -- Filter Tabs
+    -- Filter Tabs (Spells)
     TAB_AVAILABLE = "Disponibles",
     TAB_NEXT = "Próximo Nivel",
     TAB_ALL = "Todos (1-80)",
     TAB_LEARNED = "Aprendidos",
+    
+    -- View Switcher Buttons
+    TOP_BTN_SPELLS = "Hechizos",
+    TOP_BTN_QUESTS = "Misiones de Clase",
     
     -- Spell Row Status
     STATUS_LEARNED = "|cff00ff00Aprendido|r",
@@ -32,6 +36,22 @@ WT.Locales.es = {
     STATUS_NO_GOLD = "|cffff5555¡Sin Oro!|r",
     STATUS_LOCKED = "|cff888888Requiere nivel %d|r",
     COST_FREE = "|cff00ff00Gratis|r",
+    
+    -- Class Quests
+    QUEST_STATUS_COMPLETED = "|cff00ff00¡Completada!|r",
+    QUEST_STATUS_IN_PROGRESS = "|cffffff00En progreso|r",
+    QUEST_STATUS_AVAILABLE = "|cff00ccff¡Disponible!|r",
+    QUEST_STATUS_LOCKED = "|cff888888Requiere nivel %d|r",
+    QUEST_START_LABEL = "Inicio:",
+    QUEST_END_LABEL = "Entrega:",
+    QUEST_REWARD_LABEL = "Recompensa:",
+    QUEST_STEPS_LABEL = "Guía paso a paso:",
+    QUEST_MATERIALS_LABEL = "Materiales requeridos (en tus bolsas):",
+    QUEST_MATERIALS_NONE = "No requiere materiales adicionales de crafteo/oro.",
+    QUEST_MAT_READY = "|cff00ff00(¡Listo!)|r",
+    QUEST_MAT_MISSING = "|cffff5555(Faltan %d)|r",
+    QUEST_WAYPOINT_BTN = "Ruta PNJ",
+    QUEST_EMPTY_FILTER = "No hay misiones de clase que coincidan con el filtro.",
     
     -- Level Up & Alerts
     ALERT_LEVELUP = "|cff9482c9[WarlockTrainer]|r: ¡Felicidades por alcanzar el nivel %d! Tienes |cffffff00%d nuevos hechizos|r para aprender en el instructor. Coste estimado: %s. El entrenador más cercano es |cff00ff00%s|r (%s).",
@@ -52,7 +72,7 @@ WT.Locales.es = {
 
 WT.Locales.en = {
     TITLE = "Warlock Trainer |cff9482c9(3.3.5a)|r",
-    SUBTITLE = "Warlock Spell & Trainer Manager",
+    SUBTITLE = "Warlock Spells, Trainers & Class Quests Manager",
     YOUR_LEVEL = "Your Level:",
     YOUR_MONEY = "Your Money:",
     TOTAL_NEEDED = "Remaining Cost:",
@@ -70,11 +90,29 @@ WT.Locales.en = {
     TAB_ALL = "All (1-80)",
     TAB_LEARNED = "Learned",
     
-    STATUS_LEARNED = "|cff00ff00Learned|r" ,
+    TOP_BTN_SPELLS = "Trainer Spells",
+    TOP_BTN_QUESTS = "Class Quests",
+    
+    STATUS_LEARNED = "|cff00ff00Learned|r",
     STATUS_AVAILABLE = "|cffffff00Available!|r",
     STATUS_NO_GOLD = "|cffff5555No Gold!|r",
     STATUS_LOCKED = "|cff888888Requires Level %d|r",
     COST_FREE = "|cff00ff00Free|r",
+    
+    QUEST_STATUS_COMPLETED = "|cff00ff00Completed!|r",
+    QUEST_STATUS_IN_PROGRESS = "|cffffff00In Progress|r",
+    QUEST_STATUS_AVAILABLE = "|cff00ccffAvailable!|r",
+    QUEST_STATUS_LOCKED = "|cff888888Requires Level %d|r",
+    QUEST_START_LABEL = "Start:",
+    QUEST_END_LABEL = "End:",
+    QUEST_REWARD_LABEL = "Reward:",
+    QUEST_STEPS_LABEL = "Step-by-step Guide:",
+    QUEST_MATERIALS_LABEL = "Required Materials (in your bags):",
+    QUEST_MATERIALS_NONE = "No extra crafting/gold materials required.",
+    QUEST_MAT_READY = "|cff00ff00(Ready!)|r",
+    QUEST_MAT_MISSING = "|cffff5555(Missing %d)|r",
+    QUEST_WAYPOINT_BTN = "NPC Waypoint",
+    QUEST_EMPTY_FILTER = "No class quests match the filter.",
     
     ALERT_LEVELUP = "|cff9482c9[WarlockTrainer]|r: Congrats on reaching level %d! You have |cffffff00%d new spells|r to train. Estimated cost: %s. Nearest trainer: |cff00ff00%s|r (%s).",
     ALERT_REMINDER = "|cff9482c9[WarlockTrainer]|r: You have |cffffff00%d available spells|r to learn. Cost: %s. Nearest trainer: |cff00ff00%s|r.",

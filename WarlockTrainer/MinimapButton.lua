@@ -60,6 +60,7 @@ end)
 
 -- Tooltip & Clicks
 button:SetScript("OnEnter", function(self)
+    local L = WT.L
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
     GameTooltip:AddLine(L.MINIMAP_TOOLTIP_TITLE, 0.58, 0.51, 0.79)
     GameTooltip:AddLine(" ")
@@ -99,7 +100,7 @@ button:SetScript("OnClick", function(self, btn)
         local trainer = WT:GetNearestTrainer()
         if trainer then
             DEFAULT_CHAT_FRAME:AddMessage(string.format("|cff9482c9[WarlockTrainer]|r %s: |cff00ff00%s|r en %s (%s) Coords: (%.1f, %.1f)", 
-                L.TRAINER_LABEL, trainer.name, trainer.zone, trainer.subzone or "", trainer.x, trainer.y))
+                WT.L.TRAINER_LABEL, trainer.name, trainer.zone, trainer.subzone or "", trainer.x, trainer.y))
         end
     end
 end)

@@ -122,12 +122,22 @@ local function UpdateStatus()
     
     local trainerText = trainer and (trainer.name .. " en " .. trainer.zone .. " (" .. string.format("%.1f, %.1f", trainer.x, trainer.y) .. ")") or "No disponible"
     
+    local quests = WT:GetFilteredClassQuests() or {}
+    local completedQuestsCount = 0
+    for _, q in ipairs(quests) do
+        if WT:IsClassQuestCompleted(q) then
+            completedQuestsCount = completedQuestsCount + 1
+        end
+    end
+    
     local text = string.format("Clase: %s%s|r | Nivel: %d | Dinero: %s\n" ..
                                "Hechizos pendientes: %d (Coste total: %s)\n" ..
+                               "Misiones de clase: |cff00ff00%d/%d completadas|r\n" ..
                                "Entrenador más cercano: |cff00ff00%s|r",
                                isWl and "|cff9482c9Brujo" or "|cffff4444" .. (class or "Desconocido"),
                                "", level, WT:FormatMoney(GetMoney()),
                                #avail, WT:FormatMoney(cost),
+                               completedQuestsCount, #quests,
                                trainerText)
     statusInfo:SetText(text)
 end

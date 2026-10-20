@@ -11,6 +11,7 @@ WT.eventFrame = eventFrame
 -- Storage for learned spells lookup
 WT.knownSpells = {}
 WT.knownSpellIDs = {}
+WT.completedQuests = {}
 
 -- Initialize SavedVariables
 local function InitDB()
@@ -177,6 +178,123 @@ function WT:GetTotalCost(spellList)
         end
     end
     return total
+end
+
+-- ==================== CLASS QUESTS TRACKING ====================
+
+-- Update completed quests from server query
+function WT:UpdateCompletedQuests()
+    if GetQuestsCompleted then
+        WT.completedQuests = GetQuestsCompleted(WT.completedQuests or {})
+    end
+end
+
+-- Check if player has completed a class quest
+function WT:IsClassQuestCompleted(quest)
+    if not quest then return false end
+    
+    -- 1. Check reward spell (Summon Voidwalker, Succubus, Felhunter, Inferno, Doomguard, Dreadsteed)
+    if quest.rewardSpellId then
+        if WT.knownSpellIDs[quest.rewardSpellId] then
+            return true
+        end
+        if IsSpellKnown and IsSpellKnown(quest.rewardSpellId) then
+            return true
+        end
+        local spellName = GetSpellInfo(quest.rewardSpellId)
+        if spellName and WT.knownSpells[spellName] then
+            return true
+        end
+    end
+    
+    -- 2. Check reward item (e.g. Enchanted Gold Bloodrobe, item 6900)
+    if quest.rewardItemId then
+        if GetItemCount(quest.rewardItemId) > 0 then
+            return true
+        end
+        local chestId = GetInventoryItemID("player", 5)
+        if chestId == quest.rewardItemId then
+            return true
+        end
+    end
+    
+    -- 3. Check completed quest IDs from server record
+    if WT.completedQuests and quest.questIds then
+        for _, qId in ipairs(quest.questIds) do
+            if WT.completedQuests[qId] then
+                return true
+            end
+        end
+    end
+    
+    return false
+end
+
+-- Check if quest is currently in active Quest Log
+function WT:IsClassQuestInLog(quest)
+    if not quest or not quest.questIds then return false end
+    local numEntries = GetNumQuestLogEntries()
+    for i = 1, numEntries do
+        local title, _, _, isHeader, _, isComplete, _, questID = GetQuestLogTitle(i)
+        if not isHeader and title then
+            if questID then
+                for _, qId in ipairs(quest.questIds) do
+                    if questID == qId then
+                        return true, title, isComplete, i
+                    end
+                end
+            end
+            local link = GetQuestLink(i)
+            if link then
+                local linkId = link:match("quest:(%d+)")
+                if linkId then
+                    local numId = tonumber(linkId)
+                    for _, qId in ipairs(quest.questIds) do
+                        if numId == qId then
+                            return true, title, isComplete, i
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+
+-- Overall status for a class quest: "COMPLETED", "IN_PROGRESS", "AVAILABLE", "LOCKED"
+function WT:GetClassQuestStatus(quest)
+    if not quest then return "LOCKED" end
+    if WT:IsClassQuestCompleted(quest) then
+        return "COMPLETED"
+    end
+    local inLog = WT:IsClassQuestInLog(quest)
+    if inLog then
+        return "IN_PROGRESS"
+    end
+    local playerLevel = UnitLevel("player")
+    if playerLevel >= quest.level then
+        return "AVAILABLE"
+    else
+        return "LOCKED"
+    end
+end
+
+-- Filter class quests by faction and race
+function WT:GetFilteredClassQuests()
+    local playerFaction = UnitFactionGroup("player") or "Alliance"
+    local _, playerRace = UnitRace("player")
+    local list = {}
+    
+    if WT.ClassQuestsDatabase then
+        for _, quest in ipairs(WT.ClassQuestsDatabase) do
+            local factionMatch = (quest.faction == "Both" or quest.faction == playerFaction)
+            local raceMatch = (quest.race == nil or quest.race == playerRace)
+            if factionMatch and raceMatch then
+                table.insert(list, quest)
+            end
+        end
+    end
+    return list
 end
 
 -- Continent zone mappings to nearest capitals
@@ -432,6 +550,9 @@ eventFrame:RegisterEvent("SPELLS_CHANGED")
 eventFrame:RegisterEvent("LEARNED_SPELL_IN_TAB")
 eventFrame:RegisterEvent("PLAYER_LEVEL_UP")
 eventFrame:RegisterEvent("PLAYER_MONEY")
+eventFrame:RegisterEvent("QUEST_QUERY_COMPLETE")
+eventFrame:RegisterEvent("QUEST_LOG_UPDATE")
+eventFrame:RegisterEvent("BAG_UPDATE")
 
 eventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "ADDON_LOADED" then
@@ -440,12 +561,26 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
             InitDB()
             WT:InitializeSpells()
             WT:UpdateKnownSpells()
+            WT:UpdateCompletedQuests()
         end
     elseif event == "PLAYER_ENTERING_WORLD" then
         WT:InitializeSpells()
         WT:UpdateKnownSpells()
+        if QueryQuestsCompleted then
+            pcall(QueryQuestsCompleted)
+        end
+        WT:UpdateCompletedQuests()
         if WT.UI and WT.UI.Refresh then
             WT.UI:Refresh()
+        end
+    elseif event == "QUEST_QUERY_COMPLETE" then
+        WT:UpdateCompletedQuests()
+        if WT.UI and WT.UI.Refresh then
+            WT.UI:Refresh()
+        end
+    elseif event == "QUEST_LOG_UPDATE" or event == "BAG_UPDATE" then
+        if WT.UI and WT.UI.MainFrame and WT.UI.MainFrame:IsShown() and WT.UI.RefreshQuests then
+            WT.UI:RefreshQuests()
         end
     elseif event == "SPELLS_CHANGED" or event == "LEARNED_SPELL_IN_TAB" then
         WT:UpdateKnownSpells()
